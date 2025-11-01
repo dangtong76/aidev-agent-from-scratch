@@ -3,13 +3,13 @@ from dotenv import load_dotenv
 
 def main():
     load_dotenv()
-    response = openai.Completion.create(
-        model="gpt-3.5-turbo",
-        prompt="Hello, how are you?",
-        max_tokens=100,
-        temperature=0.5
+    client = openai.OpenAI()
+    response = client.responses.create(
+        model = "gpt-4o",
+        input = "안녕? 만나서 반가워!",
+        temperature=0.5,
+        max_output_tokens=100
     )
-    print(response.choices[0].text)
-
+    print(response.output_text)
 if __name__ == "__main__":
     main()
